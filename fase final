@@ -1,4 +1,6 @@
 # MATRIZ DE DATOS
+# [ID Cliente, Duración(segundos), Eventos Clics]
+# -----------------------------
 
 sesiones = [
     ["CLI001", 240, 10],
@@ -9,6 +11,10 @@ sesiones = [
     ["CLI006", 95, 5],
     ["CLI007", 30, 0]
 ]
+# =========================================================
+# FUNCIÓN: clasificar_compromiso
+# =========================================================
+
 def clasificar_compromiso(duracion, clics):
 
     if duracion > 180 and clics > 8:
@@ -20,11 +26,21 @@ def clasificar_compromiso(duracion, clics):
     else:
         return "Medio"
 
+
+# =========================================================
+# FUNCIÓN: mostrar_encabezado
+# =========================================================
+
 def mostrar_encabezado():
     print("=" * 70)
     print("      SISTEMA DE EVALUACIÓN DE COMPROMISO")
     print("=" * 70)
     print()
+
+
+# =========================================================
+# FUNCIÓN: generar_informe
+# =========================================================
 
 def generar_informe(lista_sesiones):
 
@@ -64,6 +80,10 @@ def generar_informe(lista_sesiones):
             clasificacion
         ))
 
+    # =====================================================
+    # RESUMEN FINAL
+    # =====================================================
+
     print("-" * 70)
 
     total_clientes = len(lista_sesiones)
@@ -74,6 +94,11 @@ def generar_informe(lista_sesiones):
     print("Compromiso BAJO :", total_bajo)
 
     print("=" * 70)
+
+
+# =========================================================
+# PROGRAMA PRINCIPAL
+# =========================================================
 
 mostrar_encabezado()
 generar_informe(sesiones)
