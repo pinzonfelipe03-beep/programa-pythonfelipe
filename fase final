@@ -1,0 +1,80 @@
+# MATRIZ DE DATOS
+
+sesiones = [
+    ["CLI001", 240, 10],
+    ["CLI002", 35, 1],
+    ["CLI003", 150, 6],
+    ["CLI004", 420, 15],
+    ["CLI005", 75, 2],
+    ["CLI006", 95, 5],
+    ["CLI007", 30, 0]
+]
+def clasificar_compromiso(duracion, clics):
+
+    if duracion > 180 and clics > 8:
+        return "Alto"
+
+    elif duracion < 60 or clics < 3:
+        return "Bajo"
+
+    else:
+        return "Medio"
+
+def mostrar_encabezado():
+    print("=" * 70)
+    print("      SISTEMA DE EVALUACIÓN DE COMPROMISO")
+    print("=" * 70)
+    print()
+
+def generar_informe(lista_sesiones):
+
+    total_alto = 0
+    total_medio = 0
+    total_bajo = 0
+
+    print("{:<10} {:<15} {:<15} {:<15}".format(
+        "CLIENTE", "DURACIÓN", "CLICS", "CLASIFICACIÓN"
+    ))
+
+    print("-" * 70)
+
+    for sesion in lista_sesiones:
+
+        id_cliente = sesion[0]
+        duracion = sesion[1]
+        clics = sesion[2]
+
+        clasificacion = clasificar_compromiso(duracion, clics)
+
+        # Contadores
+        if clasificacion == "Alto":
+            total_alto += 1
+
+        elif clasificacion == "Medio":
+            total_medio += 1
+
+        else:
+            total_bajo += 1
+
+        # Mostrar datos
+        print("{:<10} {:<15} {:<15} {:<15}".format(
+            id_cliente,
+            str(duracion) + " seg",
+            clics,
+            clasificacion
+        ))
+
+  
+    print("-" * 70)
+
+    total_clientes = len(lista_sesiones)
+
+    print("TOTAL DE CLIENTES ANALIZADOS:", total_clientes)
+    print("Compromiso ALTO :", total_alto)
+    print("Compromiso MEDIO:", total_medio)
+    print("Compromiso BAJO :", total_bajo)
+
+    print("=" * 70)
+
+mostrar_encabezado()
+generar_informe(sesiones)
