@@ -64,7 +64,6 @@ def generar_informe(lista_sesiones):
             clasificacion
         ))
 
-  
     print("-" * 70)
 
     total_clientes = len(lista_sesiones)
